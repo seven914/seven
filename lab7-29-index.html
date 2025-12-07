@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>图书活动专区</title>
+        <link rel="stylesheet" href="Css/lab7.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+    </head>
+    <body>
+        <div class="global-wrap">
+            <div class="header">
+                <div class="header-content">
+                    <div class="logo">
+                        <img src="pictures/logo.png" alt="logo" />
+                        <span>书香展销平台</span>
+                    </div>
+                    <div class="search-container">
+                        <label for="searchInput" class="search-icon-wrapper">
+                            <i class="fa fa-search search-icon"></i>
+                        </label>
+                        <input
+                            id="searchInput"
+                            type="text"
+                            class="search-input"
+                            placeholder="搜索图书名称、作者或标签..."
+                        />
+                    </div>
+                    <ul class="nav">
+                        <li>
+                            <a href="javascript:;" id="loginBtn" style="text-decoration: none; color: inherit">
+                                <i class="fa fa-user"></i> 登录/注册
+                            </a>
+                        </li>
+                        <li>
+                            <a href="recommend.html" style="text-decoration: none; color: inherit">
+                                <i class="fa fa-pencil-square"></i>
+                                订阅表单
+                            </a>
+                        </li>
+                        <li><i class="fa fa-home"></i> 首页</li>
+                        <li>
+                            <i class="fa fa-filter"></i>
+                            筛选
+                            <ul class="submenu">
+                                <li>
+                                    分类
+                                    <ul class="sub-submenu">
+                                        <li>童书</li>
+                                        <li>生活类</li>
+                                        <li>文学类</li>
+                                        <li>科幻类</li>
+                                        <li>网络小说</li>
+                                    </ul>
+                                </li>
+                                <li>价格</li>
+                                <li>销量</li>
+                                <li>好评</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <i class="fa fa-info-circle"></i>
+                            关于我们
+                            <ul class="submenu">
+                                <li>联系客服</li>
+                                <li>反馈帮助</li>
+                                <li>满减活动</li>
+                                <li>折扣图书</li>
+                                <li>新品特惠</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="cart"><i class="fa fa-shopping-cart"></i></div>
+            <div class="back-top"><i class="fa fa-arrow-up"></i></div>
+            <div class="toast" id="toast"></div>
+            <div class="loading" id="loading">
+                <div class="loading-text">加载中...</div>
+            </div>
+            <div class="main">
+                <div class="left">
+                    <h3><i class="fa fa-th-list"></i> 图书分类</h3>
+                    <ul>
+                        <li><i class="fa fa-child"></i> 童书绘本</li>
+                        <li>
+                            <i class="fa fa-mobile"></i> 网络小说
+                            <span class="tag">热门</span>
+                        </li>
+                        <li><i class="fa fa-history"></i> 历史文学</li>
+                        <li>
+                            <i class="fa fa-rocket"></i> 科幻小说
+                            <span class="tag">新品</span>
+                        </li>
+                        <li><i class="fa fa-leaf"></i> 生活百科</li>
+                        <li><i class="fa fa-star"></i> 经典名著</li>
+                        <li><i class="fa fa-pencil"></i> 散文传记</li>
+                        <li><i class="fa fa-heartbeat"></i> 医学类巨著</li>
+                    </ul>
+                    <h3><i class="fa fa-tags"></i>热门标签</h3>
+                    <ul>
+                        <li><i class="fa fa-tag"></i> 网络小说</li>
+                        <li><i class="fa fa-tag"></i> 科幻</li>
+                        <li><i class="fa fa-tag"></i> 散文</li>
+                        <li><i class="fa fa-tag"></i> 刑侦</li>
+                    </ul>
+                </div>
+                <div class="middle">
+                    <div id="cartoon" class="carousel">
+                        <ul class="photo-container">
+                            <li class="carousel-item">
+                                <img src="pictures/haibao.png" alt="" />
+                                <span>图书大促销</span>
+                            </li>
+                            <li class="carousel-item">
+                                <img src="pictures/haibao2.jpg" alt="" />
+                                <span>全场图书七折起，会员折上折</span>
+                            </li>
+                            <li class="carousel-item">
+                                <img src="pictures/haibao3.jpg" alt="" />
+                                <span>史铁生灵魂代表作三部曲</span>
+                            </li>
+                            <li class="carousel-item">
+                                <img src="pictures/haibao4.jpg" alt="" />
+                                <span>走近你心中的诗人</span>
+                            </li>
+                            <li class="carousel-item">
+                                <img src="pictures/haibao5.jpg" alt="" />
+                                <span>世界经典文学名著</span>
+                            </li>
+                            <li class="carousel-item">
+                                <img src="pictures/haibao6.jpg" alt="" />
+                                <span>千万金光破云而出,于尘世中贯穿天地</span>
+                            </li>
+                            <li class="carousel-item">
+                                <img src="pictures/一级律师.png" alt="" />
+                                <span>公理之下，正义不朽</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="hot">
+                        <h3>热门推荐</h3>
+                        <div class="book-list">
+                            <div class="book-item">
+                                <div class="book-flip-container">
+                                    <div class="book-front">
+                                        <img src="pictures/1.jpg" alt="热门图书1" class="flip-trigger" />
+                                        <p>《长安的荔枝》</p>
+                                        <p style="color: #e17108; font-weight: bold">五折封顶</p>
+                                    </div>
+                                    <div class="book-back">
+                                        <div class="book-title">《长安的荔枝》</div>
+                                        <div class="book-info">
+                                            <p><strong>作者：</strong>马伯庸</p>
+                                            <p><strong>出版社：</strong>湖南文艺出版社</p>
+                                            <p>
+                                                <strong>简介：</strong
+                                                >以杜牧诗句"一骑红尘妃子笑，无人知是荔枝来"为灵感，基于晚唐历史细节创作。讲述长安城小官李善德为杨贵妃诞辰从岭南运送新鲜荔枝的传奇故事。
+                                            </p>
+                                        </div>
+                                        <div class="book-price">定价：¥45 | 活动价：¥22.5</div>
+                                        <div class="book-ops">
+                                            <button class="add-cart">
+                                                <i class="fa fa-shopping-cart"></i>加入购物车
+                                            </button>
+                                            <button class="buy-now"><i class="fa fa-credit-card"></i>立即购买</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="book-item">
+                                <div class="book-flip-container">
+                                    <div class="book-front">
+                                        <img src="pictures/2.jpg" alt="热门图书2" class="flip-trigger" />
+                                        <p>《三体》</p>
+                                        <p style="color: #e17108; font-weight: bold">每满29减10</p>
+                                    </div>
+                                    <div class="book-back">
+                                        <div class="book-title">《三体》</div>
+                                        <div class="book-info">
+                                            <p><strong>作者：</strong>刘慈欣</p>
+                                            <p><strong>出版社：</strong>重庆出版社</p>
+                                            <p>
+                                                <strong>简介：</strong
+                                                >中国科幻里程碑作品，讲述地球人类文明与三体文明的碰撞、博弈与生存故事，展现宏大宇宙图景。
+                                            </p>
+                                        </div>
+                                        <div class="book-price">定价：¥88 | 活动价：每满29减10</div>
+                                        <div class="book-ops">
+                                            <button class="add-cart">
+                                                <i class="fa fa-shopping-cart"></i>加入购物车
+                                            </button>
+                                            <button class="buy-now"><i class="fa fa-credit-card"></i>立即购买</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="book-item">
+                                <div class="book-flip-container">
+                                    <div class="book-front">
+                                        <img src="pictures/3.jpg" alt="热门图书3" class="flip-trigger" />
+                                        <p>《历史的遗憾》</p>
+                                        <p style="color: #e17108; font-weight: bold">9.9元包邮</p>
+                                    </div>
+                                    <div class="book-back">
+                                        <div class="book-title">《历史的遗憾》</div>
+                                        <div class="book-info">
+                                            <p><strong>作者：</strong>姜半夏</p>
+                                            <p><strong>出版社：</strong>中国纺织出版社</p>
+                                            <p>
+                                                <strong>简介：</strong
+                                                >文史结合，讲述孔子、韩非、霍去病等历史人物故事，剖析令人叹息的历史事件。
+                                            </p>
+                                        </div>
+                                        <div class="book-price">定价：¥59 | 活动价：¥9.9 包邮</div>
+                                        <div class="book-ops">
+                                            <button class="add-cart">
+                                                <i class="fa fa-shopping-cart"></i>加入购物车
+                                            </button>
+                                            <button class="buy-now"><i class="fa fa-credit-card"></i>立即购买</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="book-item">
+                                <div class="book-flip-container">
+                                    <div class="book-front">
+                                        <img src="pictures/4.jpg" alt="热门图书4" class="flip-trigger" />
+                                        <p>《月亮与六便士》</p>
+                                        <p style="color: #e17108; font-weight: bold">5折封顶</p>
+                                    </div>
+                                    <div class="book-back">
+                                        <div class="book-title">《月亮与六便士》</div>
+                                        <div class="book-info">
+                                            <p><strong>作者：</strong>毛姆</p>
+                                            <p><strong>出版社：</strong>上海译文出版社</p>
+                                            <p>
+                                                <strong>简介：</strong
+                                                >讲述证券经纪人查尔斯·思特里克兰德为追求绘画梦想，抛弃家庭远赴巴黎、塔希提岛的故事。
+                                            </p>
+                                        </div>
+                                        <div class="book-price">定价：¥48 | 活动价：¥24</div>
+                                        <div class="book-ops">
+                                            <button class="add-cart">
+                                                <i class="fa fa-shopping-cart"></i>加入购物车
+                                            </button>
+                                            <button class="buy-now"><i class="fa fa-credit-card"></i>立即购买</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="book-item">
+                                <div class="book-flip-container">
+                                    <div class="book-front">
+                                        <img src="pictures/11.jpg" alt="热门图书5" class="flip-trigger" />
+                                        <p>《论语》</p>
+                                        <p style="color: #e17108; font-weight: bold">5折封顶</p>
+                                    </div>
+                                    <div class="book-back">
+                                        <div class="book-title">《论语》</div>
+                                        <div class="book-info">
+                                            <p><strong>作者：</strong>孔子及其弟子</p>
+                                            <p><strong>出版社：</strong>中华书局</p>
+                                            <p>
+                                                <strong>简介：</strong
+                                                >儒家经典著作，集中体现孔子的政治主张、伦理思想、道德观念及教育原则。
+                                            </p>
+                                        </div>
+                                        <div class="book-price">定价：¥36 | 活动价：¥18</div>
+                                        <div class="book-ops">
+                                            <button class="add-cart">
+                                                <i class="fa fa-shopping-cart"></i>加入购物车
+                                            </button>
+                                            <button class="buy-now"><i class="fa fa-credit-card"></i>立即购买</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="book-item">
+                                <div class="book-flip-container">
+                                    <div class="book-front">
+                                        <img src="pictures/12.jpg" alt="热门图书6" class="flip-trigger" />
+                                        <p>《小王子》</p>
+                                        <p style="color: #e17108; font-weight: bold">5折封顶</p>
+                                    </div>
+                                    <div class="book-back">
+                                        <div class="book-title">《小王子》</div>
+                                        <div class="book-info">
+                                            <p><strong>作者：</strong>安托万·德·圣-埃克苏佩里</p>
+                                            <p><strong>出版社：</strong>人民文学出版社</p>
+                                            <p>
+                                                <strong>简介：</strong
+                                                >讲述小王子从B-612小行星出发，在星际旅行中遇到的各种人和事，探讨爱与成长。
+                                            </p>
+                                        </div>
+                                        <div class="book-price">定价：¥42 | 活动价：¥21</div>
+                                        <div class="book-ops">
+                                            <button class="add-cart">
+                                                <i class="fa fa-shopping-cart"></i>加入购物车
+                                            </button>
+                                            <button class="buy-now"><i class="fa fa-credit-card"></i>立即购买</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="rexiao">
+                        <h3>热销榜单</h3>
+                        <div class="rexiao-container">
+                            <div class="rexiao-carousel">
+                                <div class="rexiao-img">
+                                    <img src="pictures/poyun.jpg" alt="热销第一" />
+                                    <p>
+                                        <strong><i class="fa fa-trophy" style="color: gold"></i></strong>热销榜第一
+                                    </p>
+                                </div>
+                                <div class="rexiao-img">
+                                    <img src="pictures/qiangjinjiu.jpg" alt="热销第二" />
+                                    <p>
+                                        <strong><i class="fa fa-trophy" style="color: silver"></i></strong>热销榜第二
+                                    </p>
+                                </div>
+                                <div class="rexiao-img">
+                                    <img src="pictures/shapolang.jpg" alt="热销第三" />
+                                    <p>
+                                        <strong><i class="fa fa-trophy" style="color: #cd7f32"></i></strong>热销榜第三
+                                    </p>
+                                </div>
+                                <div class="rexiao-img">
+                                    <img src="pictures/一级律师.png" alt="热销第四" />
+                                    <p>
+                                        <strong><i class="fa fa-certificate" style="color: #eae8e7"></i></strong
+                                        >热销榜第四
+                                    </p>
+                                </div>
+                                <div class="rexiao-img">
+                                    <img src="pictures/1.jpg" alt="热销第五" />
+                                    <p>
+                                        <strong><i class="fa fa-certificate" style="color: #eae8e7"></i></strong
+                                        >热销榜第五
+                                    </p>
+                                </div>
+                                <div class="rexiao-img">
+                                    <img src="pictures/2.jpg" alt="热销第六" />
+                                    <p>
+                                        <strong><i class="fa fa-certificate" style="color: #eae8e7"></i></strong
+                                        >热销榜第六
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="new">
+                        <h3>新书上市</h3>
+                        <table>
+                            <tr>
+                                <th><i class="fa fa-book"></i> 图书名称</th>
+                                <th><i class="fa fa-user"></i> 作者</th>
+                                <th><i class="fa fa-rmb"></i> 定价</th>
+                            </tr>
+                            <tr>
+                                <td>《楚天以南》</td>
+                                <td>大风不是木偶</td>
+                                <td>￥70.0</td>
+                            </tr>
+                            <tr>
+                                <td>《桃花源没事儿》</td>
+                                <td>马伯庸</td>
+                                <td>￥25</td>
+                            </tr>
+                            <tr>
+                                <td>《将进酒》</td>
+                                <td>唐酒卿</td>
+                                <td>￥100</td>
+                            </tr>
+                            <tr>
+                                <td>《破云》</td>
+                                <td>淮上</td>
+                                <td>￥100</td>
+                            </tr>
+                            <tr>
+                                <td>《一级律师》</td>
+                                <td>木苏里</td>
+                                <td>￥80</td>
+                            </tr>
+                            <tr>
+                                <td>《杀破狼》</td>
+                                <td>Priest</td>
+                                <td>￥80</td>
+                            </tr>
+                            <tr>
+                                <td>《枭起青壤》</td>
+                                <td>尾鱼</td>
+                                <td>￥70</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+                <div class="right">
+                    <h3>促销活动</h3>
+                    <img class="promo-img" src="pictures/haibao2.jpg" alt="促销海报" />
+                    <div class="promo-text">
+                        <p><i class="fa fa-gift"></i>金秋大放价</p>
+                        <img class="promo-img" src="pictures/8.jpg" alt="cuxiao" />
+                        <p><i class="fa fa-leaf"></i> 红叶季.书香浓</p>
+                        <p><i class="fa fa-percent"></i>全场图书5折封顶</p>
+                        <img class="promo-img" src="pictures/9.jpg" alt="cuxiao" />
+                        <p><i class="fa fa-money"></i>满100减30</p>
+                        <img class="promo-img" src="pictures/10.jpg" alt="cuxiao" />
+                    </div>
+                </div>
+            </div>
+            <footer class="footer">
+                <div class="footer-content">
+                    <div class="footer-section about">
+                        <h3>关于我们</h3>
+                        <p>书香展销平台致力于为广大读者提供优质、优惠的图书资源，打造专业的图书展销平台。</p>
+                        <div class="social">
+                            <a href="#"><i class="fa fa-weibo"></i></a>
+                            <a href="#"><i class="fa fa-wechat"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-section links">
+                        <h3>了解更多</h3>
+                        <ul>
+                            <li><a href="#">关于网页</a></li>
+                            <li><a href="#">联系我们</a></li>
+                            <li><a href="#">隐私政策</a></li>
+                            <li><a href="#">使用条款</a></li>
+                            <li><a href="#">常见问题</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section contact">
+                        <h3>联系我们</h3>
+                        <ul>
+                            <li><i class="fa fa-map-marker"></i> 烟台市芝罘区书香大厦</li>
+                            <li><i class="fa fa-phone"></i> 777-123-4567</li>
+                            <li><i class="fa fa-envelope"></i> contact@bookstore.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">&copy;2025 书香展销平台 | 版权所有</div>
+            </footer>
+            <div class="modal" id="loginModal">
+                <div class="modal-overlay" id="modalOverlay"></div>
+                <div class="modal-content">
+                    <span class="modal-close" id="modalClose">&times;</span>
+                    <div id="login" class="login-modal-inner">
+                        <div class="modal-header">
+                            <ul class="pass">
+                                <li><a href="#">密码登录</a><span class="line">|</span></li>
+                                <li><a href="#">验证码登录</a></li>
+                            </ul>
+                        </div>
+                        <div class="main">
+                            <form action="" method="post" target="">
+                                <div class="form-group">
+                                    <label for="use" class="icon-label"> <i class="fa fa-user"></i></label>
+                                    <input type="text" name="user" value="" id="use" placeholder="手机号/邮箱/微信" />
+                                </div>
+                                <div class="form-group">
+                                    <label for="word" class="icon-label"> <i class="fa fa-lock"></i></label>
+                                    <input type="password" name="pass" value="" id="word" placeholder="请输入密码" />
+                                </div>
+                                <p class="agree">登录即同意<a href="#">用户协议、隐私政策</a></p>
+                                <div class="but">
+                                    <input type="submit" name="" value="登录" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            window.addEventListener("load", function () {
+                const loading = document.getElementById("loading");
+                loading.classList.add("active");
+                setTimeout(() => {
+                    loading.classList.remove("active");
+                }, 800);
+            });
+            const backTop = document.querySelector(".back-top");
+            window.addEventListener("scroll", function () {
+                if (window.scrollY > 300) {
+                    backTop.style.display = "block";
+                } else {
+                    backTop.style.display = "none";
+                }
+            });
+            backTop.addEventListener("click", function () {
+                window.scrollTo({ top: 0, behavior: "smooth" });
+            });
+            const toast = document.getElementById("toast");
+            function showToast(text) {
+                toast.textContent = text;
+                toast.style.display = "block";
+                setTimeout(() => {
+                    toast.style.display = "none";
+                }, 2000);
+            }
+            document.querySelector(".cart").addEventListener("click", function () {
+                showToast("购物车里有0件商品");
+            });
+            document.querySelectorAll(".add-cart").forEach((btn) => {
+                btn.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    const bookName = this.closest(".book-item").querySelector(".book-title").textContent;
+                    showToast(`已将${bookName}加入购物车`);
+                });
+            });
+            document.querySelectorAll(".buy-now").forEach((btn) => {
+                btn.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    const bookName = this.closest(".book-item").querySelector(".book-title").textContent;
+                    showToast(`正在购买${bookName}...`);
+                });
+            });
+            const loginBtn = document.getElementById("loginBtn");
+            const loginModal = document.getElementById("loginModal");
+            const modalClose = document.getElementById("modalClose");
+            const modalOverlay = document.getElementById("modalOverlay");
+            loginBtn.addEventListener("click", function () {
+                loginModal.style.display = "block";
+                document.body.style.overflow = "hidden";
+            });
+            function hideModal() {
+                loginModal.style.display = "none";
+                document.body.style.overflow = "auto";
+            }
+            modalClose.addEventListener("click", hideModal);
+            modalOverlay.addEventListener("click", hideModal);
+            loginModal.querySelector(".modal-content").addEventListener("click", function (e) {
+                e.stopPropagation();
+            });
+            document.querySelectorAll(".flip-trigger").forEach((trigger) => {
+                trigger.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    const bookItem = this.closest(".book-item");
+                    bookItem.classList.toggle("flipped");
+                });
+            });
+            document.querySelectorAll(".book-back").forEach((back) => {
+                back.addEventListener("click", function (e) {
+                    e.stopPropagation();
+                    const bookItem = this.closest(".book-item");
+                    bookItem.classList.toggle("flipped");
+                });
+            });
+        </script>
+    </body>
+</html>
