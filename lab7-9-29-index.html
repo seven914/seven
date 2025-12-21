@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>图书活动专区</title>
+        <link rel="stylesheet" href="Css/lab7.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+    </head>
+    <body>
+        <div class="global-wrap">
+            <!-- 实时时间显示栏 -->
+            <div class="real-time-bar" id="realTimeBar">
+                <div class="time-container">
+                    <span id="currentDate"></span>
+                    <span id="currentWeek"></span>
+                    <span id="currentTime"></span>
+                </div>
+            </div>
+
+            <!-- 头部 -->
+            <header class="header">
+                <div class="header-content">
+                    <div class="logo">
+                        <img src="pictures/logo.png" alt="书香展销平台logo" loading="lazy" />
+                        <span>书香展销平台</span>
+                    </div>
+                    <div class="search-container" style="position: relative">
+                        <label for="searchInput" class="search-icon-wrapper">
+                            <i class="fa fa-search search-icon"></i>
+                        </label>
+                        <input
+                            id="searchInput"
+                            type="text"
+                            class="search-input"
+                            placeholder="搜索图书名称、作者或标签..."
+                        />
+                        <div id="searchResult" class="search-result"></div>
+                    </div>
+                    <ul class="nav">
+                        <li>
+                            <a href="javascript:;" id="loginBtn" style="text-decoration: none; color: inherit">
+                                <i class="fa fa-user"></i> 登录/注册
+                            </a>
+                        </li>
+                        <li>
+                            <a href="recommend.html" style="text-decoration: none; color: inherit">
+                                <i class="fa fa-pencil-square"></i>
+                                订阅表单
+                            </a>
+                        </li>
+                        <li><i class="fa fa-home"></i> 首页</li>
+                        <li>
+                            <i class="fa fa-filter"></i>
+                            筛选
+                            <ul class="submenu">
+                                <li>
+                                    分类
+                                    <ul class="sub-submenu">
+                                        <li>童书</li>
+                                        <li>生活类</li>
+                                        <li>文学类</li>
+                                        <li>科幻类</li>
+                                        <li>网络小说</li>
+                                    </ul>
+                                </li>
+                                <li>价格</li>
+                                <li>销量</li>
+                                <li>好评</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <i class="fa fa-info-circle"></i>
+                            关于我们
+                            <ul class="submenu">
+                                <li>联系客服</li>
+                                <li>反馈帮助</li>
+                                <li>满减活动</li>
+                                <li>折扣图书</li>
+                                <li>新品特惠</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </header>
+
+            <!-- 购物车悬浮按钮 -->
+            <div class="cart" id="cartBtn">
+                <i class="fa fa-shopping-cart"></i>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </div>
+
+            <!-- 返回顶部 -->
+            <div class="back-top"><i class="fa fa-arrow-up"></i></div>
+
+            <!-- 提示框 -->
+            <div class="toast" id="toast"></div>
+
+            <!-- 加载动画 -->
+            <div class="loading" id="loading">
+                <div class="loading-text">加载中...</div>
+            </div>
+
+            <!-- 主体内容 -->
+            <main class="main">
+                <!-- 左侧分类 -->
+                <div class="left">
+                    <h3><i class="fa fa-th-list"></i> 图书分类</h3>
+                    <ul>
+                        <li><i class="fa fa-child"></i> 童书绘本</li>
+                        <li>
+                            <i class="fa fa-mobile"></i> 网络小说
+                            <span class="tag">热门</span>
+                        </li>
+                        <li><i class="fa fa-history"></i> 历史文学</li>
+                        <li>
+                            <i class="fa fa-rocket"></i> 科幻小说
+                            <span class="tag">新品</span>
+                        </li>
+                        <li><i class="fa fa-leaf"></i> 生活百科</li>
+                        <li><i class="fa fa-star"></i> 经典名著</li>
+                        <li><i class="fa fa-pencil"></i> 散文传记</li>
+                        <li><i class="fa fa-heartbeat"></i> 医学类巨著</li>
+                    </ul>
+                    <h3><i class="fa fa-tags"></i>热门标签</h3>
+                    <ul>
+                        <li><i class="fa fa-tag"></i> 网络小说</li>
+                        <li><i class="fa fa-tag"></i> 科幻</li>
+                        <li><i class="fa fa-tag"></i> 散文</li>
+                        <li><i class="fa fa-tag"></i> 刑侦</li>
+                    </ul>
+                </div>
+
+                <!-- 中间内容 -->
+                <div class="middle">
+                    <!-- 轮播图 -->
+                    <div id="cartoon" class="carousel">
+                        <div class="carousel-arrow prev-arrow" id="prevArrow">
+                            <i class="fa fa-angle-left"></i>
+                        </div>
+                        <div class="carousel-arrow next-arrow" id="nextArrow">
+                            <i class="fa fa-angle-right"></i>
+                        </div>
+
+                        <ul class="photo-container" id="carouselContainer">
+                            <li class="carousel-item">
+                                <img src="pictures/haibao.png" alt="图书大促销" loading="lazy" />
+                                <span>图书大促销</span>
+                            </li>
+                            <li class="carousel-item">
+                                <img src="pictures/haibao2.jpg" alt="全场图书七折起" loading="lazy" />
+                                <span>全场图书七折起，会员折上折</span>
+                            </li>
+                            <li class="carousel-item">
+                                <img src="pictures/img3.jpg" alt="史铁生灵魂代表作三部曲" loading="lazy" />
+                                <span>史铁生灵魂代表作三部曲</span>
+                            </li>
+                            <li class="carousel-item">
+                                <img src="pictures/img4.jpg" alt="余华著名小说" loading="lazy" />
+                                <span>余华著名小说</span>
+                            </li>
+                            <li class="carousel-item">
+                                <img src="pictures/img6.jpg" alt="世界经典文学名著" loading="lazy" />
+                                <span>哈利波特</span>
+                            </li>
+                            <li class="carousel-item">
+                                <img src="pictures/img5.jpg" alt="千万金光破云而出" loading="lazy" />
+                                <span>千万金光破云而出,于尘世中贯穿天地</span>
+                            </li>
+                            <li class="carousel-item">
+                                <img src="pictures/img7.jpg" alt="公理之下，正义不朽" loading="lazy" />
+                                <span>公理之下，正义不朽</span>
+                            </li>
+                        </ul>
+                        <div class="carousel-indicators" id="carouselIndicators"></div>
+                    </div>
+
+                    <!-- 限时抢购倒计时 -->
+                    <div class="flash-sale">
+                        <h3><i class="fa fa-clock-o"></i> 限时抢购倒计时</h3>
+                        <div class="countdown" id="countdown">
+                            <div class="countdown-item">
+                                <span class="countdown-value" id="countdownDays">00</span>
+                                <span class="countdown-label">天</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span class="countdown-value" id="countdownHours">00</span>
+                                <span class="countdown-label">时</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span class="countdown-value" id="countdownMinutes">00</span>
+                                <span class="countdown-label">分</span>
+                            </div>
+                            <div class="countdown-item">
+                                <span class="countdown-value" id="countdownSeconds">00</span>
+                                <span class="countdown-label">秒</span>
+                            </div>
+                        </div>
+                        <p class="sale-info">全场图书5折封顶，活动截止时间：2025-12-31 23:59:59</p>
+                    </div>
+
+                    <!-- 热门推荐 -->
+                    <div class="hot">
+                        <div class="hot-header">
+                            <h3>热门推荐</h3>
+                            <div class="sort-filter">
+                                <button class="sort-btn" id="sortPriceAsc">价格升序</button>
+                                <button class="sort-btn" id="sortPriceDesc">价格降序</button>
+                                <button class="sort-btn" id="sortRating">按评分排序</button>
+                                <label class="checkbox-label">
+                                    <input type="checkbox" id="inStockOnly" /> 只看有货
+                                </label>
+                            </div>
+                        </div>
+                        <div class="book-list" id="bookList"></div>
+                    </div>
+
+                    <!-- 随机图书推荐区域 -->
+                    <section class="random-recommend">
+                        <div class="random-header">
+                            <h3>随机推荐</h3>
+                            <button id="refreshRandom" class="refresh-btn"><i class="fa fa-refresh"></i> 换一批</button>
+                        </div>
+                        <!-- 复用热门推荐的布局结构 -->
+                        <div id="randomBookList" class="random-book-list"></div>
+                    </section>
+
+                    <!-- 热销榜单 -->
+                    <div class="rexiao">
+                        <h3>热销榜单</h3>
+                        <div class="rexiao-container">
+                            <div class="rexiao-carousel">
+                                <div class="rexiao-img">
+                                    <img src="pictures/poyun.jpg" alt="热销第一：破云" loading="lazy" />
+                                    <p>
+                                        <strong><i class="fa fa-trophy" style="color: gold"></i></strong>热销榜第一
+                                    </p>
+                                </div>
+                                <div class="rexiao-img">
+                                    <img src="pictures/qiangjinjiu.jpg" alt="热销第二：将进酒" loading="lazy" />
+                                    <p>
+                                        <strong><i class="fa fa-trophy" style="color: silver"></i></strong>热销榜第二
+                                    </p>
+                                </div>
+                                <div class="rexiao-img">
+                                    <img src="pictures/shapolang.jpg" alt="热销第三：杀破狼" loading="lazy" />
+                                    <p>
+                                        <strong><i class="fa fa-trophy" style="color: #cd7f32"></i></strong>热销榜第三
+                                    </p>
+                                </div>
+                                <div class="rexiao-img">
+                                    <img src="pictures/一级律师.png" alt="热销第四：一级律师" loading="lazy" />
+                                    <p>
+                                        <strong><i class="fa fa-certificate" style="color: #eae8e7"></i></strong
+                                        >热销榜第四
+                                    </p>
+                                </div>
+                                <div class="rexiao-img">
+                                    <img src="pictures/1.jpg" alt="热销第五：长安的荔枝" loading="lazy" />
+                                    <p>
+                                        <strong><i class="fa fa-certificate" style="color: #eae8e7"></i></strong
+                                        >热销榜第五
+                                    </p>
+                                </div>
+                                <div class="rexiao-img">
+                                    <img src="pictures/2.jpg" alt="热销第六：三体" loading="lazy" />
+                                    <p>
+                                        <strong><i class="fa fa-certificate" style="color: #eae8e7"></i></strong
+                                        >热销榜第六
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 新书上市 -->
+                    <div class="new">
+                        <h3>新书上市</h3>
+                        <table>
+                            <tr>
+                                <th><i class="fa fa-book"></i> 图书名称</th>
+                                <th><i class="fa fa-user"></i> 作者</th>
+                                <th><i class="fa fa-rmb"></i> 定价</th>
+                            </tr>
+                            <tr>
+                                <td>《楚天以南》</td>
+                                <td>大风不是木偶</td>
+                                <td>￥70.0</td>
+                            </tr>
+                            <tr>
+                                <td>《桃花源没事儿》</td>
+                                <td>马伯庸</td>
+                                <td>￥25</td>
+                            </tr>
+                            <tr>
+                                <td>《将进酒》</td>
+                                <td>唐酒卿</td>
+                                <td>￥100</td>
+                            </tr>
+                            <tr>
+                                <td>《破云》</td>
+                                <td>淮上</td>
+                                <td>￥100</td>
+                            </tr>
+                            <tr>
+                                <td>《一级律师》</td>
+                                <td>木苏里</td>
+                                <td>￥80</td>
+                            </tr>
+                            <tr>
+                                <td>《杀破狼》</td>
+                                <td>Priest</td>
+                                <td>￥80</td>
+                            </tr>
+                            <tr>
+                                <td>《枭起青壤》</td>
+                                <td>尾鱼</td>
+                                <td>￥70</td>
+                            </tr>
+                        </table>
+                    </div>
+                </div>
+
+                <!-- 右侧促销 -->
+                <div class="right">
+                    <h3>促销活动</h3>
+                    <img class="promo-img" src="pictures/haibao2.jpg" alt="金秋大放价" loading="lazy" />
+                    <div class="promo-text">
+                        <p><i class="fa fa-gift"></i>金秋大放价</p>
+                        <img class="promo-img" src="pictures/8.jpg" alt="红叶季书香浓" loading="lazy" />
+                        <p><i class="fa fa-leaf"></i> 红叶季.书香浓</p>
+                        <p><i class="fa fa-percent"></i>全场图书5折封顶</p>
+                        <img class="promo-img" src="pictures/9.jpg" alt="满100减30" loading="lazy" />
+                        <p><i class="fa fa-money"></i>满100减30</p>
+                        <img class="promo-img" src="pictures/10.jpg" alt="促销活动" loading="lazy" />
+                    </div>
+                </div>
+            </main>
+
+            <!-- 页脚 -->
+            <footer class="footer">
+                <div class="footer-content">
+                    <div class="footer-section about">
+                        <h3>关于我们</h3>
+                        <p>书香展销平台致力于为广大读者提供优质、优惠的图书资源，打造专业的图书展销平台。</p>
+                        <div class="social">
+                            <a href="#"><i class="fa fa-weibo"></i></a>
+                            <a href="#"><i class="fa fa-wechat"></i></a>
+                        </div>
+                    </div>
+                    <div class="footer-section links">
+                        <h3>了解更多</h3>
+                        <ul>
+                            <li><a href="#">关于网页</a></li>
+                            <li><a href="#">联系我们</a></li>
+                            <li><a href="#">隐私政策</a></li>
+                            <li><a href="#">使用条款</a></li>
+                            <li><a href="#">常见问题</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-section contact">
+                        <h3>联系我们</h3>
+                        <ul>
+                            <li><i class="fa fa-map-marker"></i> 烟台市芝罘区书香大厦</li>
+                            <li><i class="fa fa-phone"></i> 777-123-4567</li>
+                            <li><i class="fa fa-envelope"></i> contact@bookstore.com</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="footer-bottom">&copy;2025 书香展销平台 | 版权所有</div>
+            </footer>
+
+            <!-- 登录弹窗 -->
+            <div class="modal" id="loginModal">
+                <div class="modal-overlay" id="modalOverlay"></div>
+                <div class="modal-content">
+                    <span class="modal-close" id="modalClose">&times;</span>
+                    <div id="login" class="login-modal-inner">
+                        <div class="modal-header">
+                            <ul class="pass">
+                                <li>
+                                    <a href="javascript:;" class="login-tab active" data-type="password">密码登录</a>
+                                    <span class="line">|</span>
+                                </li>
+                                <li><a href="javascript:;" class="login-tab" data-type="code">验证码登录</a></li>
+                            </ul>
+                        </div>
+                        <div class="main">
+                            <!-- 密码登录表单 -->
+                            <form action="" method="post" target="" id="loginForm">
+                                <div class="form-group">
+                                    <div class="input-with-icon">
+                                        <label for="use" class="icon-label">
+                                            <i class="fa fa-user"></i>
+                                        </label>
+                                        <input type="text" name="user" id="use" placeholder="手机号/邮箱" />
+                                    </div>
+                                    <div id="usernameError" class="error-tip"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="input-with-icon">
+                                        <label for="word" class="icon-label">
+                                            <i class="fa fa-lock"></i>
+                                        </label>
+                                        <input type="password" name="pass" id="word" placeholder="请输入密码" />
+                                    </div>
+                                    <div id="passwordError" class="error-tip"></div>
+                                    <div class="password-strength-area">
+                                        <div class="password-strength">
+                                            <div class="strength-bar"></div>
+                                            <div class="strength-bar"></div>
+                                            <div class="strength-bar"></div>
+                                        </div>
+                                        <div id="strengthText"></div>
+                                    </div>
+                                </div>
+
+                                <p class="agree">登录即同意<a href="#">用户协议、隐私政策</a></p>
+                                <div class="but">
+                                    <input type="submit" name="" value="登录" />
+                                </div>
+                            </form>
+
+                            <!-- 验证码登录表单 -->
+                            <form action="" method="post" target="" id="codeLoginForm" style="display: none">
+                                <div class="form-group">
+                                    <div class="input-with-icon">
+                                        <label for="codePhone" class="icon-label">
+                                            <i class="fa fa-mobile"></i>
+                                        </label>
+                                        <input type="text" name="phone" id="codePhone" placeholder="请输入手机号" />
+                                    </div>
+                                    <div id="phoneError" class="error-tip"></div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="verify-code-group">
+                                        <div class="input-with-icon" style="flex: 1">
+                                            <label for="verifyCodeInput" class="icon-label">
+                                                <i class="fa fa-code"></i>
+                                            </label>
+                                            <input
+                                                type="text"
+                                                name="code"
+                                                id="verifyCodeInput"
+                                                placeholder="请输入验证码"
+                                            />
+                                        </div>
+                                        <button type="button" id="getCodeBtn" class="get-code-btn">获取验证码</button>
+                                    </div>
+                                    <div id="codeError" class="error-tip"></div>
+                                </div>
+
+                                <p class="agree">登录即同意<a href="#">用户协议、隐私政策</a></p>
+                                <div class="but">
+                                    <input type="submit" name="" value="登录" />
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script src="script/lab.js"></script>
+    </body>
+</html>

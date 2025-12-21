@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>图书推荐订阅</title>
+        <link rel="stylesheet" href="Css/recommend.css" />
+        <link
+            rel="stylesheet"
+            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        />
+    </head>
+    <body>
+        <div class="container">
+            <a href="lab7-9-29-index.html" class="back-home"> <i class="fa fa-arrow-circle-left"></i> 返回首页 </a>
+            <h2 class="title"><i class="fa fa-book"></i>图书推荐订阅表单</h2>
+            <form action="" method="post">
+                <div class="group">
+                    <label for="username"><i class="fa fa-user"></i> 姓名</label>
+                    <input type="text" name="" value="" id="username" placeholder="请输入您的姓名" required />
+                    <label for="email"><i class="fa fa-envelope"></i>电子邮箱</label>
+                    <input
+                        type="email"
+                        name=""
+                        value=""
+                        id="email"
+                        placeholder="请输入您的常用邮箱（用于接收推荐）"
+                        required
+                    />
+                    <p class="tips">（我们将通过此邮箱发送图书推荐信息）</p>
+                    <label for="teliphone"><i class="fa fa-phone"></i>联系电话</label>
+                    <input type="tel" name="" value="" id="teliphone" placeholder="请输入您的联系电话（选填）" />
+                </div>
+                <div class="group">
+                    <label><i class="fa fa-venus-mars"></i> 性别</label>
+                    <div class="radio-group">
+                        <div class="radio-item">
+                            <input type="radio" id="male" name="gender" value="male" />
+                            <label for="male">男</label>
+                            <input type="radio" id="female" name="gender" value="female" />
+                            <label for="female">女</label>
+                            <input type="radio" id="secret" name="gender" value="secret" checked />
+                            <label for="secret">保密</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="group">
+                    <label><i class="fa fa-bookmark"></i> 感兴趣的图书分类（可多选）</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="novel" name="book" value="novel" />
+                            <label for="novel">小说（科幻/悬疑/言情）</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="liturture" name="book" value="liturture" />
+                            <label for="liturture">文学（散文/诗歌/经典名著）</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="history" name="book" value="history" />
+                            <label for="history">历史/传记</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="commecial" name="book" value="commecial" />
+                            <label for="commecial">商业/职场</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="science" name="book" value="science" />
+                            <label for="science">科普/自然科学</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="life" name="book" value="life" />
+                            <label for="life">生活</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="art" name="book" value="art" />
+                            <label for="art">艺术</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="study" name="book" value="study" />
+                            <label for="study">学习</label>
+                        </div>
+                    </div>
+                </div>
+                <div class="group">
+                    <label for="frequency"><i class="fa fa-calendar"></i> 希望接收推荐的频率</label>
+                    <select id="frequency" name="frequency" required>
+                        <option value="请选择频率">请选择频率</option>
+                        <option value="每日一次">每日一次</option>
+                        <option value="每周一次" selected>每周一次</option>
+                        <option value="每两周一次">每两周一次</option>
+                        <option value="每月一次">每月一次</option>
+                        <option value="每年两次">每年两次</option>
+                        <option value="每年一次">每年一次</option>
+                    </select>
+                </div>
+                <div class="group">
+                    <label for="city"><i class="fa fa-building" style="color: #a0522d"></i> 所在城市</label>
+                    <select id="city" name="city">
+                        <option value="请选择城市（选填）">请选择城市（选填）</option>
+                        <option value="北京市">北京市</option>
+                        <option value="上海市">上海市</option>
+                        <option value="烟台市">烟台市</option>
+                        <option value="青岛市">青岛市</option>
+                        <option value="济南市">济南市</option>
+                        <option value="其他城市">其他城市</option>
+                    </select>
+                </div>
+                <div class="group">
+                    <label for="burget"><i class="fa fa-money"></i>每月购书预算</label>
+                    <select name="burget" id="burget">
+                        <option value="请选择预算范围" selected>请选择预算范围</option>
+                        <option value="50元以内">50元以内</option>
+                        <option value="50-100元">50-100元</option>
+                        <option value="100-200元">100-200元</option>
+                        <option value="200-500元">200-500元</option>
+                        <option value="500元以上">500元以上</option>
+                    </select>
+                </div>
+                <div class="group">
+                    <label for="comments"><i class="fa fa-comment"></i> 其他订阅需求或建议</label>
+                    <textarea
+                        id="comments"
+                        name="comments"
+                        placeholder="请告诉我们您的特殊需求，例如喜欢的作者、题材偏好等..."
+                    ></textarea>
+                </div>
+                <div class="group">
+                    <label for="avater">上传头像</label>
+                    <input type="file" name="avater" id="avater" accept="image/*" />
+                </div>
+                <div class="footer">
+                    <button type="submit" class="btn btn-submit"><i class="fa fa-paper-plane"></i> 提交订阅</button>
+                    <button type="reset" class="btn btn-reset"><i class="fa fa-refresh"></i> 重置表单</button>
+                </div>
+            </form>
+        </div>
+    </body>
+</html>
